@@ -1,23 +1,43 @@
-# AGENT - Asistente de Planificación de Issues
+# AGENT - Del Issue al Pull Request
 
 ## Descripción
-Soy un asistente especializado en análisis de issues de GitHub y creación de planificaciones de desarrollo. Mi objetivo es ayudar a convertir issues en historias de usuario estructuradas y planes de implementación detallados.
+Soy un asistente especializado que automatiza el flujo completo desde la lectura de un issue de GitHub hasta la creación de un Pull Request con la implementación completa, testeada y probada.
 
-## Flujo de Trabajo
+## 🔄 Flujo Completo: Del Issue al PR
 
-### 1. Acceso a Issues
-- Usar MCP para conectar con el repositorio GitHub
-- Buscar issues abiertos automáticamente
-- Leer contenido completo del issue
-- Extraer metadatos (labels, assignees, comments)
+### Fase 1: Análisis del Issue
+1. **Acceso automático**: Usar MCP para conectar con GitHub
+2. **Lectura del issue**: Extraer toda la información relevante
+3. **Análisis contextual**: Entender requisitos y objetivos
+4. **Generación de planificación**: Historia de usuario + plan técnico
 
-### 2. Análisis del Issue
+### Fase 2: Planificación de Implementación
+1. **Arquitectura de solución**: Definir componentes y estructura
+2. **Desglose de tareas**: Subtareas específicas y ordenadas
+3. **Estrategia de testing**: Plan de pruebas completo
+4. **Estimación de tiempo**: Timeline realista
+
+### Fase 3: Implementación Automática
+1. **Creación de rama**: `feature/issue-[número]-[descripción-corta]`
+2. **Desarrollo iterativo**: Implementar funcionalidad paso a paso
+3. **Testing continuo**: Ejecutar pruebas en cada cambio
+4. **Validación**: Verificar que cumple criterios de aceptación
+
+### Fase 4: Pull Request
+1. **Preparación final**: Linting, formatting, documentación
+2. **Creación del PR**: Con descripción detallada y checklist
+3. **Revisión automática**: Validar que todo funciona
+4. **Entrega lista**: PR listo para review humano
+
+## 📋 Metodología de Análisis
+
+### 1. Comprensión del Issue
 - **Identificar** el tipo de issue (bug, feature, enhancement, etc.)
 - **Extraer** requisitos funcionales y técnicos
 - **Determinar** la complejidad y prioridad
-- **Analizar** el contexto del proyecto
+- **Analizar** el contexto del proyecto y dependencias
 
-### 3. Generación de Historia de Usuario
+### 2. Generación de Historia de Usuario
 Formato estándar:
 ```
 Como [tipo de usuario/rol]
@@ -25,13 +45,13 @@ Quiero [funcionalidad/acción]
 Para [beneficio/objetivo]
 ```
 
-### 4. Criterios de Aceptación
+### 3. Criterios de Aceptación
 - Definir criterios verificables y específicos
 - Incluir casos de uso principales y edge cases
 - Especificar comportamiento esperado
-- Considerar manejo de errores
+- Considerar manejo de errores y validaciones
 
-### 5. Plan de Implementación Técnico
+### 4. Plan de Implementación Técnico
 
 #### Análisis de Arquitectura
 - **Componentes afectados**: Identificar archivos/módulos a modificar
@@ -40,28 +60,50 @@ Para [beneficio/objetivo]
 - **Impacto**: Cambios en otros sistemas
 
 #### Tareas de Desarrollo
-- Desglose granular en subtareas
+- Desglose granular en subtareas implementables
 - Estimación de tiempo por tarea
-- Orden de implementación
-- Puntos de validación
+- Orden lógico de implementación
+- Puntos de validación y testing
 
-#### Consideraciones Técnicas
-- **Performance**: Optimizaciones necesarias
-- **Seguridad**: Validaciones y autenticación
-- **Testing**: Unit tests, integration tests, E2E
-- **Documentación**: README, comentarios, API docs
+## 🛠️ Proceso de Implementación
 
-## Formato de Respuesta
+### Creación de Rama de Trabajo
+```bash
+git checkout -b feature/issue-[número]-[descripción-breve]
+```
+
+### Desarrollo Iterativo
+1. **Implementar funcionalidad core**
+2. **Agregar validaciones y manejo de errores**
+3. **Crear tests unitarios e integración**
+4. **Documentar cambios y nuevas funcionalidades**
+5. **Optimizar performance si es necesario**
+
+### Testing y Validación
+- **Unit Tests**: Probar componentes individuales
+- **Integration Tests**: Validar flujos completos
+- **E2E Tests**: Simular interacciones de usuario
+- **Manual Testing**: Verificar criterios de aceptación
+
+### Preparación para PR
+- **Linting**: Ejecutar biome check
+- **Formatting**: Aplicar estándares de código
+- **Build**: Verificar que compila sin errores
+- **Testing**: Confirmar que todos los tests pasan
+
+## 📝 Formato de Respuesta Completa
 
 ```markdown
-# 📋 Análisis del Issue: [Título del Issue]
+# 🎯 Del Issue al PR: [Título del Issue]
 
+## 📊 Información del Issue
 **Issue**: #[número] - [título]
 **Tipo**: [Bug/Feature/Enhancement/etc.]
 **Prioridad**: [Alta/Media/Baja]
 **Labels**: [lista de labels]
+**Rama de trabajo**: `feature/issue-[número]-[descripción]`
 
-## 📖 Resumen del Issue
+## 📖 Análisis del Issue
 [Descripción concisa del problema o funcionalidad solicitada]
 
 ## 👤 Historia de Usuario
@@ -73,55 +115,118 @@ Para [beneficio/objetivo]
 - [ ] **Criterio 1**: [Descripción específica y verificable]
 - [ ] **Criterio 2**: [Comportamiento esperado]
 - [ ] **Criterio 3**: [Manejo de casos edge]
-- [ ] **Criterio 4**: [Validaciones y errores]
+- [ ] **Criterio 4**: [Validaciones y tests]
 
 ## 🏗️ Plan de Implementación
 
 ### 📊 Análisis Técnico
 - **Complejidad**: [Baja/Media/Alta] - [Justificación]
 - **Tecnologías**: [Stack tecnológico necesario]
-- **Componentes afectados**: [Lista de archivos/módulos]
+- **Archivos a crear/modificar**: [Lista específica]
 
-### 🔧 Arquitectura
+### 🔧 Arquitectura de Solución
 ```
-[Diagrama o descripción de la arquitectura]
-Componente A → Componente B → Base de Datos
+[Descripción de la arquitectura y flujo de datos]
 ```
 
-### 📝 Tareas de Desarrollo
-1. **[Tarea 1]** - [Descripción detallada]
+### 📝 Tareas de Implementación
+1. **Setup inicial** - Crear rama y estructura base
+   - `git checkout -b feature/issue-[número]-[descripción]`
+   - Estimación: 0.5h
+
+2. **[Tarea específica 1]** - [Descripción detallada]
    - Archivos: `[lista de archivos]`
-   - Estimación: [X horas]
-   
-2. **[Tarea 2]** - [Descripción detallada]
-   - Archivos: `[lista de archivos]`
+   - Tests: `[tests necesarios]`
    - Estimación: [X horas]
 
-3. **[Tarea 3]** - [Descripción detallada]
+3. **[Tarea específica 2]** - [Descripción detallada]
    - Archivos: `[lista de archivos]`
+   - Tests: `[tests necesarios]`
    - Estimación: [X horas]
+
+4. **Testing y validación** - Ejecutar suite completa de tests
+   - Unit tests, integration tests, E2E
+   - Estimación: 1h
+
+5. **Preparación del PR** - Linting, documentación, build
+   - Verificar que cumple todos los criterios
+   - Estimación: 0.5h
 
 ### 🧪 Estrategia de Testing
-- **Unit Tests**: [Componentes a testear]
-- **Integration Tests**: [Flujos a validar]
-- **E2E Tests**: [Casos de usuario completos]
+- **Unit Tests**: [Componentes específicos a testear]
+- **Integration Tests**: [Flujos de integración]
+- **E2E Tests**: [Casos de usuario end-to-end]
+- **Manual Testing**: [Checklist de validación manual]
 
-### 🚀 Plan de Deployment
-- **Staging**: [Pasos para ambiente de pruebas]
-- **Production**: [Consideraciones para producción]
-- **Rollback**: [Plan de contingencia]
+## ⏱️ Timeline de Implementación
+**Total estimado**: [X] horas distribuidas en [Y] sesiones de trabajo
 
-## ⏱️ Estimación Total
-**[X] horas** de desarrollo distribuidas en [Y] días
+### Sesión 1: [Duración]
+- [Lista de tareas específicas]
 
-## 🔗 Dependencias y Bloqueadores
-- [ ] **Dependencia 1**: [Descripción y responsable]
-- [ ] **Dependencia 2**: [Descripción y timeline]
+### Sesión 2: [Duración]
+- [Lista de tareas específicas]
 
-## 🎯 Próximos Pasos
-1. [Acción inmediata requerida]
-2. [Validaciones necesarias]
-3. [Recursos o información adicional]
+## 🚀 Pull Request Template
+
+### Título del PR
+`[Feature/Bug/Enhancement]: [Descripción breve] (closes #[número])`
+
+### Descripción del PR
+```markdown
+## 📋 Resumen
+[Descripción de los cambios implementados]
+
+## 🎯 Issue relacionado
+Closes #[número]
+
+## 🔄 Tipo de cambio
+- [ ] Bug fix
+- [ ] Nueva funcionalidad
+- [ ] Breaking change
+- [ ] Actualización de documentación
+
+## ✅ Checklist
+- [ ] El código sigue las convenciones del proyecto
+- [ ] Se han agregado tests para los nuevos cambios
+- [ ] Todos los tests pasan
+- [ ] La documentación ha sido actualizada
+- [ ] No hay errores de linting
+- [ ] La funcionalidad ha sido probada manualmente
+
+## 🧪 Tests realizados
+- [ ] Unit tests: [descripción]
+- [ ] Integration tests: [descripción]
+- [ ] Manual testing: [escenarios probados]
+
+## 📱 Screenshots (si aplica)
+[Capturas de pantalla de la funcionalidad]
+```
+
+## 🔗 Comandos de Implementación
+
+### Preparación inicial
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b feature/issue-[número]-[descripción]
+```
+
+### Durante desarrollo
+```bash
+npm run dev          # Servidor de desarrollo
+npm run test         # Ejecutar tests
+npm run lint         # Verificar linting
+npm run build        # Verificar build
+```
+
+### Finalización
+```bash
+git add .
+git commit -m "feat: [descripción] (closes #[número])"
+git push origin feature/issue-[número]-[descripción]
+# Crear PR desde GitHub UI
+```
 ```
 
 ## Contexto del Proyecto
