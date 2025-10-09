@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface TerminalEntry {
   timestamp: string;
@@ -20,9 +20,9 @@ export default function Home() {
     if (email.trim()) {
       const newEntry: TerminalEntry = {
         timestamp: new Date().toLocaleTimeString(),
-        email: email.trim()
+        email: email.trim(),
       };
-      setTerminalEntries(prev => [...prev, newEntry]);
+      setTerminalEntries((prev) => [...prev, newEntry]);
       setEmail("");
     }
   };
@@ -58,7 +58,7 @@ export default function Home() {
                   className="w-full"
                 />
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" variant="cyan" className="w-full">
                 Enviar
               </Button>
             </form>
@@ -87,7 +87,10 @@ export default function Home() {
               ) : (
                 <div className="space-y-2">
                   {terminalEntries.map((entry, index) => (
-                    <div key={index} className="space-y-1">
+                    <div
+                      key={`${entry.timestamp}-${index}`}
+                      className="space-y-1"
+                    >
                       <div className="text-blue-400">
                         [{entry.timestamp}] $ form-submit
                       </div>
